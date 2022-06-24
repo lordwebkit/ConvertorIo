@@ -3,8 +3,8 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 public class Binary {
-    public static int toOctal(String binaryNumber) {
-        int decimalNumber = toDecimal(binaryNumber);
+    public static String toOctal(String binaryNumber) {
+        int decimalNumber = Integer.parseInt(toDecimal(binaryNumber));
         int octalNumber = 0;
         int i = 0;
 
@@ -12,9 +12,9 @@ public class Binary {
             octalNumber = (int) (octalNumber + (decimalNumber % 8) * Math.pow(10, i++));
             decimalNumber = decimalNumber / 8;
         }
-        return octalNumber;
+        return Integer.toString(octalNumber);
     }
-    public static int toDecimal(String binaryNumber) {
+    public static String toDecimal(String binaryNumber) {
         int decimalNumber = 0;
 
         for (int i = 0; i < binaryNumber.length(); i++) {
@@ -22,7 +22,7 @@ public class Binary {
             int value = Character.getNumericValue(binaryNumber.charAt(index));
             decimalNumber += value * Math.pow(2, i);
         }
-        return decimalNumber;
+        return Integer.toString(decimalNumber);
     }
     public static String toHex(String binaryNumber) {
         String hexNumber = "";

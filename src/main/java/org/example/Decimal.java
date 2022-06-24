@@ -3,24 +3,27 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 public class Decimal {
-    public static String toBinary(int decimalNumber) {
+    public static String toBinary(String decimalNumber) {
         String binaryNumber = "";
-        while (decimalNumber != 0) {
-            binaryNumber = decimalNumber % 2 + binaryNumber;
-            decimalNumber = decimalNumber / 2;
+        int decimal = Integer.parseInt(decimalNumber);
+        while (decimal != 0) {
+            binaryNumber = decimal % 2 + binaryNumber;
+            decimal = decimal / 2;
         }
         return binaryNumber;
     }
-    public static String toOctal(int decimalNumber) {
+    public static String toOctal(String decimalNumber) {
         String octalNumber = "";
-        while (decimalNumber != 0) {
-            octalNumber = decimalNumber % 8 + octalNumber;
-            decimalNumber = decimalNumber / 8;
+        int decimal = Integer.parseInt(decimalNumber);
+        while (decimal != 0) {
+            octalNumber = decimal % 8 + octalNumber;
+            decimal = decimal / 8;
         }
         return octalNumber;
     }
-    public static String toHex(int decimalNumber) {
+    public static String toHex(String decimalNumber) {
         String hexNumber = "";
+        int decimal = Integer.parseInt(decimalNumber);
         Map<Integer, String> map = Map.ofEntries(
                 entry(10, "a"),
                 entry(11, "b"),
@@ -29,14 +32,14 @@ public class Decimal {
                 entry(14, "e"),
                 entry(15, "f")
         );
-        while (decimalNumber != 0) {
-            int rest = decimalNumber % 16;
+        while (decimal != 0) {
+            int rest = decimal % 16;
             if (rest > 9) {
                 hexNumber = map.get(rest) + hexNumber;
             } else {
-                hexNumber = decimalNumber % 16 + hexNumber;
+                hexNumber = decimal % 16 + hexNumber;
             }
-            decimalNumber = decimalNumber / 16;
+            decimal = decimal / 16;
         }
         return hexNumber;
     }

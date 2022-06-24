@@ -5,9 +5,9 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 public class Octal {
-    public static String toBinary(int octalNumber) {
+    public static String toBinary(String octalNumber) {
         String binaryNumber = "";
-        int decimalNumber = toDecimal(octalNumber);
+        int decimalNumber = Integer.parseInt(toDecimal(octalNumber));
 
         while (decimalNumber != 0) {
             binaryNumber = decimalNumber % 2 + binaryNumber;
@@ -16,17 +16,18 @@ public class Octal {
 
         return binaryNumber;
     }
-    public static int toDecimal(int octalNumber) {
+    public static String toDecimal(String octalNumber) {
         int decimalNumber = 0;
+        int octal = Integer.parseInt(octalNumber);
         int i = 0;
-        while (octalNumber != 0) {
-            decimalNumber = (int) (decimalNumber + (octalNumber % 10) * Math.pow(8, i));
-            octalNumber = octalNumber / 10;
+        while (octal != 0) {
+            decimalNumber = (int) (decimalNumber + (octal % 10) * Math.pow(8, i));
+            octal = octal / 10;
             i++;
         }
-        return decimalNumber;
+        return Integer.toString(decimalNumber);
     }
-    public static String toHex(int octalNumber) {
+    public static String toHex(String octalNumber) {
         String hexNumber = "";
         Map<Integer, String> map = Map.ofEntries(
                 entry(10, "a"),
@@ -36,7 +37,7 @@ public class Octal {
                 entry(14, "e"),
                 entry(15, "f")
         );
-        int decimalNumber = toDecimal(octalNumber);
+        int decimalNumber = Integer.parseInt(toDecimal(octalNumber));
         while (decimalNumber != 0) {
             int rest = (decimalNumber % 16);
             if (rest > 9) {

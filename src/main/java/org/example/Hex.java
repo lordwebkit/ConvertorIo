@@ -6,7 +6,7 @@ import static java.util.Map.entry;
 public class Hex {
     public static String toBinary(String hexNumber) {
         String binaryNumber = "";
-        int decimalNumber = toDecimal(hexNumber);
+        int decimalNumber = Integer.parseInt(toDecimal(hexNumber));
 
         while (decimalNumber != 0) {
             binaryNumber = decimalNumber % 2 + binaryNumber;
@@ -16,7 +16,7 @@ public class Hex {
     }
     public static String toOctal(String hexNumber) {
         String octalNumber = "";
-        int decimalNumber = toDecimal(hexNumber);
+        int decimalNumber = Integer.parseInt(toDecimal(hexNumber));
 
         while (decimalNumber != 0) {
             octalNumber = decimalNumber % 8 + octalNumber;
@@ -24,7 +24,7 @@ public class Hex {
         }
         return octalNumber;
     }
-    public static int toDecimal(String hexNumber) {
+    public static String toDecimal(String hexNumber) {
         int decimalNumber = 0;
         Map<Integer, String> map = Map.ofEntries(
                 entry(10, "a"),
@@ -40,6 +40,6 @@ public class Hex {
             decimalNumber = (int) (decimalNumber + value * Math.pow(16, i));
         }
 
-        return decimalNumber;
+        return Integer.toString(decimalNumber);
     }
 }
