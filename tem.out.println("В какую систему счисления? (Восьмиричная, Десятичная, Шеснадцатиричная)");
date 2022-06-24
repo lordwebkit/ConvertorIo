@@ -1,0 +1,35 @@
+[33mcommit 460661a91c9ba81f7007519170f97f01bddff726[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Nikita Kashirskiy <lordwebkit@gmail.com>
+Date:   Fri Jun 24 16:38:08 2022 +0300
+
+    changed output of all methods to string
+
+[33mcommit d0f5310d2506ece0c09cf8e5fa8a6adcaec1a81f[m
+Author: Nikita Kashirskiy <lordwebkit@gmail.com>
+Date:   Fri Jun 24 15:28:46 2022 +0300
+
+    add Hex class. It  convects from hex number
+
+[33mcommit fba1976f628eac9e0e9477fee24b969d4d6ca73a[m
+Author: Nikita Kashirskiy <lordwebkit@gmail.com>
+Date:   Fri Jun 24 15:08:20 2022 +0300
+
+    add Decimal class. It  convects from decimal number
+
+[33mcommit a720ba64288e705575134b2fcf4d493da31bf980[m
+Author: Nikita Kashirskiy <lordwebkit@gmail.com>
+Date:   Fri Jun 24 14:45:22 2022 +0300
+
+    add Octal class. It  convects from octal number
+
+[33mcommit eb48917d877f4a346501c77c57c82cbf8c5ca298[m
+Author: Nikita Kashirskiy <lordwebkit@gmail.com>
+Date:   Thu Jun 23 23:36:56 2022 +0300
+
+    add Binary class. It convects from binary number
+
+[33mcommit 78b8c3a2ce2d9d5475744dc88401aceedb6fbe3e[m
+Author: Nikita Kashirskiy <lordwebkit@gmail.com>
+Date:   Thu Jun 23 13:31:14 2022 +0300
+
+    create project convector.io
