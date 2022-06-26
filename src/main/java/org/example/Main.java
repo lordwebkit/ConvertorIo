@@ -3,94 +3,123 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
-    public static String from = "";
-    public static String to = "";
-
-    public static void main(String[] args) {
+    public static void questionFrom(String numberSys) {
+        System.out.println("Вы выбрали " + numberSys + " систему счисления");
+        System.out.println("В какую систему счисления? (Двоичная, Восьмиричная, Десятичная, Шеснадцатиричная)");
+    }
+    public static void questionTo(String numberSys) {
+        System.out.println("Введите число для перевода из " + numberSys + " системы счисления");
+    }
+    public static void initQuestion() {
         Scanner sc = new Scanner(System.in);
+        String result;
         System.out.println("Из какой системы счисления? (Двоичная, Восьмиричная, Десятичная, Шеснадцатиричная)");
-        from = sc.next();
 
-        switch (from) {
-            case "Двоичная":
-                System.out.println("Вы выбрали Двоичную система счисления");
-                System.out.println("В какую систему счисления? (Восьмиричная, Десятичная, Шеснадцатиричная)");
-                to = sc.next();
-                switch (to) {
-                    case "Восьмиричная":
-                        System.out.println("Введите число для перевода из Двоичной системы счисления");
-                        System.out.println(Binary.toOctal(sc.next()));
+        switch (sc.next().toLowerCase()) {
+            case "двоичная":
+                questionFrom("Двоичную");
+                switch (sc.next().toLowerCase()) {
+                    case "двоичная":
+                        System.out.println("Это не имеет смысла попробуйте снова?");
+                        initQuestion();
                         break;
-                    case "Десятичная":
-                        System.out.println("Введите число для перевода из Двоичной системы счисления");
-                        System.out.println(Binary.toDecimal(sc.next()));
+                    case "восьмиричная":
+                        questionTo("Двоичной");
+                        result = Binary.toOctal(sc.next());
+                        System.out.println("Результат перевода: " + result);
                         break;
-                    case "Шеснадцатиричная":
-                        System.out.println("Введите число для перевода из Двоичной системы счисления");
-                        System.out.println(Binary.toHex(sc.next()));
+                    case "десятичная":
+                        questionTo("Двоичной");
+                        result = Binary.toDecimal(sc.next());
+                        System.out.println("Результат перевода: " + result);
                         break;
-                }
-                break;
-            case "Восьмиричная":
-                System.out.println("Вы выбрали Восьмиричную система счисления");
-                System.out.println("В какую систему счисления? (Двоичная, Десятичная, Шеснадцатиричная)");
-                to = sc.next();
-                switch (to) {
-                    case "Двоичная":
-                        System.out.println("Введите число для перевода из Восьмиричной системы счисления");
-                        System.out.println(Octal.toBinary(sc.next()));
-                        break;
-                    case "Десятичная":
-                        System.out.println("Введите число для перевода из Восьмиричной системы счисления");
-                        System.out.println(Octal.toDecimal(sc.next()));
-                        break;
-                    case "Шеснадцатиричная":
-                        System.out.println("Введите число для перевода из Восьмиричной системы счисления");
-                        System.out.println(Octal.toHex(sc.next()));
+                    case "шеснадцатиричная":
+                        questionTo("Двоичной");
+                        result = Binary.toHex(sc.next());
+                        System.out.println("Результат перевода: " + result);
                         break;
                 }
                 break;
-            case "Десятичная":
-                System.out.println("Вы выбрали Десятичную систему счисления");
-                System.out.println("В какую систему счисления? (Двоичная, Восьмиричная, Шеснадцатиричная)");
-                to = sc.next();
-                switch (to) {
-                    case "Двоичная":
-                        System.out.println("Введите число для перевода из Десятичной системы счисления");
-                        System.out.println(Decimal.toBinary(sc.next()));
+            case "восьмиричная":
+                questionFrom("Восьмиричную");
+                switch (sc.next().toLowerCase()) {
+                    case "двоичная":
+                        questionTo("Восьмиричной");
+                        result = Octal.toBinary(sc.next());
+                        System.out.println("Результат перевода: " + result);
                         break;
-                    case "Восьмиричная":
-                        System.out.println("Введите число для перевода из Десятичной системы счисления");
-                        System.out.println(Decimal.toOctal(sc.next()));
+                    case "восьмиричная":
+                        System.out.println("Это не имеет смысла попробуйте снова?");
+                        initQuestion();
                         break;
-                    case "Шеснадцатиричная":
-                        System.out.println("Введите число для перевода из Десятичной системы счисления");
-                        System.out.println(Decimal.toHex(sc.next()));
+                    case "десятичная":
+                        questionTo("Восьмиричной");
+                        result = Octal.toDecimal(sc.next());
+                        System.out.println("Результат перевода: " + result);
+                        break;
+                    case "шеснадцатиричная":
+                        questionTo("Восьмиричной");
+                        result = Octal.toHex(sc.next());
+                        System.out.println("Результат перевода: " + result);
                         break;
                 }
                 break;
-            case "Шеснадцатиричная":
-                System.out.println("Вы выбрали Шеснадцатиричную систему счисления");
-                System.out.println("В какую систему счисления? (Двоичная, Восьмиричная, Десятичная)");
-                to = sc.next();
-                switch (to) {
-                    case "Двоичная":
-                        System.out.println("Введите число для перевода из Шеснадцатиричной системы счисления");
-                        System.out.println(Hex.toBinary(sc.next()));
+            case "десятичная":
+                questionFrom("Десятичную");
+                switch (sc.next().toLowerCase()) {
+                    case "двоичная":
+                        questionTo("Десятичной");
+                        result = Decimal.toBinary(sc.next());
+                        System.out.println("Результат перевода: " + result);
                         break;
-                    case "Восьмиричная":
-                        System.out.println("Введите число для перевода из Шеснадцатиричной системы счисления");
-                        System.out.println(Hex.toOctal(sc.next()));
+                    case "восьмиричная":
+                        questionTo("Десятичной");
+                        result = Decimal.toOctal(sc.next());
+                        System.out.println("Результат перевода: " + result);
                         break;
-                    case "Десятичная":
-                        System.out.println("Введите число для перевода из Шеснадцатиричной системы счисления");
-                        System.out.println(Hex.toDecimal(sc.next()));
+                    case "десятичная":
+                        System.out.println("Это не имеет смысла попробуйте снова?");
+                        initQuestion();
+                        break;
+                    case "шеснадцатиричная":
+                        questionTo("Десятичной");
+                        result = Decimal.toHex(sc.next());
+                        System.out.println("Результат перевода: " + result);
+                        break;
+                }
+                break;
+            case "шеснадцатиричная":
+                questionFrom("Шеснадцатиричную");
+                switch (sc.next().toLowerCase()) {
+                    case "двоичная":
+                        questionTo("Шеснадцатиричной");
+                        result = Hex.toBinary(sc.next());
+                        System.out.println("Результат перевода: " + result);
+                        break;
+                    case "восьмиричная":
+                        questionTo("Шеснадцатиричной");
+                        result = Hex.toOctal(sc.next());
+                        System.out.println("Результат перевода: " + result);
+                        break;
+                    case "десятичная":
+                        questionTo("Шеснадцатиричной");
+                        result = Hex.toDecimal(sc.next());
+                        System.out.println("Результат перевода: " + result);
+                        break;
+                    case "шеснадцатиричная":
+                        System.out.println("Это не имеет смысла попробуйте снова?");
+                        initQuestion();
                         break;
                 }
                 break;
             default:
                 System.out.println("Возможно вы выбрали не существующую систему счисления попробуйте снова");
+                initQuestion();
                 break;
         }
+    }
+
+    public static void main(String[] args) {
+        initQuestion();
     }
 }
